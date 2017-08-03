@@ -1,0 +1,154 @@
+<!-- ------------------------------------------------------------------------------
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Copyright (C) Rococo Global Technologies, Inc - All Rights Reserved 2016
+ * -------------------------------------------------------------------------------->
+ 
+ <!--
+* This file contains the necessary elements that will be included in the web page.
+* @author Lehmar Cabrillos
+* @version 0.01
+* Version History
+* [04/11/2016] 0.01 – Lehmar Cabrillos – initial codes
+-->	
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Bento Application </title>
+		<!-- Attaching the style sheet for formatting. -->
+		<link rel="stylesheet" type="text/css" href="../css/Bento.css">
+	</head>
+	<body onload="changeContent('screenDish')">
+		<!-- The left panel for the menus and labels.-->
+		<div id="section">
+			<!-- Contains the logo and name of the application.-->
+			<div id="sectionHeader">
+				<img id="bentoLogo" src="..\assets\bento_logo.png" alt="Bento Application" > 
+				<h1>BENTO APPLICATION</h1>
+			</div>
+			
+			<!-- Contains labels and images for the changes in the content div.-->
+			<div id="sectionChoices">
+				<img class="screenIcon" src="..\assets\dish_icon.png" alt="Register Dish" > 
+				<a class="screenLabel" href="#" title="Register Dish" onclick="changeContent('screenDish')"> Register Dish </a><br>
+				<img class="screenIcon" src="..\assets\customize_icon.png" alt="Customize Bento" > 
+				<a class="screenLabel" href="#" title="Customize Bento"> Customize Bento </a><br>
+				<img class="screenIcon" src="..\assets\menu_icon.png" alt="Bento Menu" > 
+				<a class="screenLabel" href="#" title="Bento Menu"> Bento Menu </a><br>
+			</div>
+		</div>
+		
+		<!-- Holds the forms for inputs and display.-->
+		<div id="content">
+			<!-- Holds the title of the content and logo.-->
+			<div id="contentHeader">
+				<img id="headerIcon" src="..\assets\dish_icon.png" alt="Register Dish" > 
+				<label id="headerLabel"> Register Dish </label>
+			</div>
+			<!--Contains the span that will hold the message (error/success) to be displayed.-->
+			<div id="messageDiv"> 
+				<span id="spanMessage"> </span>
+			</div>
+			
+			<!-- Contains the 'Register Dish' screen-->
+			
+			
+			<div class ="contentScreen" id="screenDish">
+				<div class ="panelLeft">
+					<form name="screenDishForm" onsubmit="return registerDish()"> 
+						<!--Label and input for the name of dish -->
+						<label class="contentLabel"> Name: </label><br> 
+						<input class ="inputField" type="text" id="dishName" placeholder="E.g. Beef Teriyaki" required><br>
+							
+						<!-- Label and Drop down list for the type of dish -->
+						<label class="contentLabel"> Type: </label><br> 
+						<select class = "inputField" id="dishType" onchange="changeTypeImage()">
+							<option value="mainDish">Main Dish</option>
+							<option value="sideDish">Side Dish</option>
+							<option value="soup">Soup</option>
+						</select><br>
+						 
+						<!--Label and input for the price of dish -->
+						<label class="contentLabel"> Price: </label> <br>
+						<input class="inputField" type="number" minimum="0" id="dishPrice" placeholder="E.g. 120.00" required><br>
+						
+						<!--Button that will be used to register the dish. -->
+						<button class="btnRegister" type="submit"> Register Dish </button>
+					</form>
+				</div> 
+				
+				<!--Holds the image of the selected type of dish.-->
+				<div class ="panelRight">
+					<img id="imgDishType" src="..\assets\main_dish_type.png" alt="Dish Type" > 
+				</div>
+			</div>
+			
+			
+			<!-- Contains the 'Customize Bento' screen-->
+			<div class ="contentScreen" id="screenCustomize">
+				<div class ="panelLeft">
+					<form name="screenBentoForm" onsubmit="return registerBento()"> 
+						<label class="contentLabel"> Name: <br> </label> 
+						<input class ="inputField" type="text" id="bentoName" placeholder="E.g. Bento Special" required>
+						<input class="inputPrice" type="number" id="bentoTotalPrice" disabled>
+						<br>
+						 
+						<label class="contentLabel"> Main Dish: <br> </label>
+						<select class="inputField" id="bentoMainDish" onchange="changePriceDisplay('bentoMainDish', 'mainDishPrice')">
+							<!-- The options will be populated programatically -->
+						</select>
+						<input class="inputPrice" type="number" id="mainDishPrice" disabled>
+						<br>
+						
+						<label class="contentLabel"> Soup:<br> </label>
+						<select class="inputField" id="bentoSoup" onchange="changePriceDisplay('bentoSoup', 'soupPrice')">
+							<!-- The options will be populated programatically -->
+						</select>
+						<input class="inputPrice" type="number" id="soupPrice" disabled>
+						<br>
+						
+						<button class="btnRegister" id="btnSaveBento" data-bentoIndex="-1" type="submit"> Register Bento </button>
+					</form>
+				</div>
+				
+				<div class ="panelRight">
+					<table id="tblSideDish">
+						<tr>
+							<td> <label class="contentLabel"> Side Dish: </label> </td>
+							<td> <label class="contentLabel"> Price: </label> </td>
+						</tr>
+						<tr id="sideDishRow1">
+							<td>
+								<select class="inputField" id="bentoSideDish1" onchange="changePriceDisplay('bentoSideDish1', 'sideDishPrice1')">
+									<!-- The options will be populated programatically -->
+								</select>
+							</td>
+							<td><input class="inputPrice" type="number" id="sideDishPrice1" disabled></td>
+						</tr>
+					</table>
+				</div>
+				<button class="btnRegister" id="btnAddSideDish" onclick="insertSideDishRow()"> Add SideDish</button>
+			</div>
+			
+			<!-- Contains the 'Bento menu' screen-->
+			<div class ="contentScreen" id="screenMenu">
+				<table id="tblBentoMenu">
+					<tr>
+						<th width="20%"> NAME  </th>
+						<th width="10%"> PRICE </th>
+						<th width="20%"> MAIN DISH </th>
+						<th width="20%"> SOUP </th>
+						<th width="30%"> ACTIONS </th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<!-- Attaching Javascript files for screen interaction.-->
+		<script src="../js/bentoMain.js"></script>
+		<script src="../js/bentoDish.js"></script>
+		<script src="../js/bentoCustomize.js"></script>
+		<script src="../js/bentoMenu.js"></script>
+	</body>
+</html>

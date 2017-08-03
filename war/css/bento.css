@@ -1,0 +1,146 @@
+/* ------------------------------------------------------------------------------
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Copyright (C) Rococo Global Technologies, Inc - All Rights Reserved 2016
+ * --------------------------------------------------------------------------- */
+ 
+/*
+* This file contains the formatting of elements in the html.
+* @author Lehmar Cabrillos
+* @version 0.01
+* Version History
+* [04/11/2016] 0.01 – Lehmar Cabrillos – initial codes
+*/	
+
+/*Style for the body*/
+body {
+	/*Overriding the margin property of body.*/
+	margin: 0 !important;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Styles for the UI template of the application.*/
+/*Styles for the side div.*/
+div#section {
+	background-color: white;
+	vertical-align: center;
+	width: 300px;
+	height: 100%;
+	float: left;
+	overflow: auto;
+}
+
+div#section div#sectionHeader {
+	background-color: #70beb5;
+	text-align: center;
+	height: 40%;
+}
+
+div#section div#sectionHeader img#bentoLogo {
+	height: 150px;
+	width: 150px;
+}
+
+div#section div#sectionChoices {
+	background-color: #7dcac2;
+	line-height: 80px;
+	height: 60%;
+}
+
+div#section img.screenIcon {
+	height: 50px;
+	width: 50px;
+	margin: 20px;
+	vertical-align: middle;
+}
+
+/*Styles for the content div.*/
+div#content {
+	height: 100%;
+	overflow: auto;
+	position: static;
+}
+
+div#content div#contentHeader {
+	background-color: #cbdc94;
+	height: 100px;
+	vertical-align: center;
+}
+
+div#content div#contentHeader img#headerIcon {
+	height: 80px;
+	width: 80px;
+	margin: 10px 20px 10px 30px;
+	vertical-align: middle;
+}
+
+div#content div#contentHeader label#headerLabel{
+	font-size: 30px;
+}
+
+div.contentScreen {
+	padding: 10px 50px 10px 50px;
+	line-height: 50px;
+	overflow: auto;	
+}
+
+div#content div#messageDiv {
+	line-height: 20px;
+	height: 70px;
+}
+
+div.contentScreen  div.panelLeft {
+	float: left;
+	width: 450px;
+}
+
+div.contentScreen  div.panelRight {
+	margin-left: 450px;
+}
+
+div.contentScreen  label.contentLabel, div.contentScreen .inputField{
+	width: 300px;
+} 
+
+div.contentScreen button.btnRegister {
+	width: 300px;
+	height: 50px;
+}
+
+/*Styles for the 'Register Dish' screen.*/
+#imgDishType {
+	padding:1px;
+	border:1px solid #021a40;
+	background-color: #f6f6f6;
+	height: 300px;
+	width: 300px;
+}	
+
+
+/*Styles for the 'Customize Bento' screen*/
+input.inputPrice {
+	width: 100px;
+}
+
+/*Style for the 'Bento Menu' screen*/
+div.contentScreen  table#tblBentoMenu{
+	table-layout: fixed;
+	width: 100%;
+}
+
+div.contentScreen  table#tblBentoMenu, div.contentScreen  table#tblBentoMenu th, div.contentScreen  table#tblBentoMenu td{
+	border-collapse: collapse;
+    border: 1px solid black;
+	line-height: 30px;
+	text-align: center;
+}
+
+
+
+
+
+
+
